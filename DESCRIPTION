@@ -1,0 +1,21 @@
+Package: intsegration
+Title: Integration and segregation of complex networks
+Version: 0.4
+Authors@R: person(
+    given = "Giulia",
+    family = "Bertagnolli",
+    role = c("aut", "cre"),
+    email = "giulia.bertagnolli@gmail.com",
+    comment = c(ORCID = "0000-0001-8637-0632")
+    )
+Description: This package contains functions for computing indicators of segregation and integration of a given single-layer network.
+URL: https://github.com/gbertagnolli/intsegration
+BugReports: https://github.com/gbertagnolli/intsegration
+Depends: R (>= 3.4.0)
+Imports:
+  igraph,
+  e1071
+License: GPL (>=2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
