@@ -7,7 +7,7 @@
 #' @return D matrix of shortest-path distances, i.e. sum of costs along minimising paths
 #' @return F matrix of total flows, i.e. sum of inverse costs, along shortest-paths
 rcpp_floyd_flow <- function(C) {
-    .Call('_intsegration_rcpp_floyd_flow', PACKAGE = 'intsegration', C)
+    .Call(`_intsegration_rcpp_floyd_flow`, C)
 }
 
 #' Floyd-Warshall algorithm for shortest-path distances and total flows
@@ -21,6 +21,6 @@ rcpp_floyd_flow <- function(C) {
 #' @return D_eucl matrix of Euclidean distances along shortest-paths (paths minimising sum of costs)
 #' @return F_eucl matrix of total Eucl. flows, i.e. sum of inverse lengths, along shortest-paths
 rcpp_floyd_flow_length <- function(C, L) {
-    .Call('_intsegration_rcpp_floyd_flow_length', PACKAGE = 'intsegration', C, L)
+    .Call(`_intsegration_rcpp_floyd_flow_length`, C, L)
 }
 
