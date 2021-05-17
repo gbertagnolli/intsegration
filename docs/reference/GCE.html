@@ -196,9 +196,7 @@ The normalisation of the GCE relises on the comparison with the efficiency of a
       <td><p>Euclidean length of the edge, i.e., Euclidean distance between its
 two end-points, which are assumed to be non-negative reals. If this is NULL (the default)
 and <code>g</code> has an edge attribute <code>length</code> that will be used.
-If this is NA then no lengths are used (even if the graph edges have a length attribute).
-Mind that the GCE normalised over Euclidean lengths/distances has
-\(W_{ideal} = \Phi_{Eucl}\).</p></td>
+If this is NA then no lengths are used (even if the graph edges have a length attribute).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -247,16 +245,7 @@ Mind that the GCE normalised over Euclidean lengths/distances has
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    union</span></div><div class='input'><span class='va'>karate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_graph.html'>make_graph</a></span><span class='op'>(</span><span class='st'>"zachary"</span><span class='op'>)</span>
 <span class='fu'>GCE</span><span class='op'>(</span><span class='va'>karate</span>, directed <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Unweighted graph, topological case.No Euclidean lengths/distances provided.Start computation of shortest-paths
-#&gt; compute E(G)</div><div class='output co'>#&gt; $non_normalised
-#&gt; [1] 0.4920083
-#&gt; 
-#&gt; $normalised
-#&gt; [1] 0.4920083
-#&gt; 
-#&gt; $normalised_lengths
-#&gt; NULL
-#&gt; </div></pre>
+</div><div class='output co'>#&gt; Unweighted graph, topological case.No Euclidean lengths/distances provided.Start computation of shortest-paths</div><div class='output co'>#&gt; <span class='error'>Error in .Call("_intsegration_rcpp_floyd_flow", PACKAGE = "intsegration",     C): "_intsegration_rcpp_floyd_flow" not available for .Call() for package "intsegration"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

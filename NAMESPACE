@@ -3,6 +3,3 @@
 export(GCE)
 export(LCE)
 export(compute_modularity)
-useDynLib(intsegration, .registration=TRUE)
-importFrom(Rcpp, evalCpp)
-exportPattern("^[[:alpha:]]+")

@@ -33,9 +33,7 @@ The normalisation of the GCE relises on the comparison with the efficiency of a
 \item{lengths}{Euclidean length of the edge, i.e., Euclidean distance between its
 two end-points, which are assumed to be non-negative reals. If this is NULL (the default)
 and \code{g} has an edge attribute \code{length} that will be used.
-If this is NA then no lengths are used (even if the graph edges have a length attribute).
-Mind that the GCE normalised over Euclidean lengths/distances has
-\eqn{W_{ideal} = \Phi_{Eucl}}.}
+If this is NA then no lengths are used (even if the graph edges have a length attribute).}
 
 \item{verbose}{logical, default TRUE.}
 }
