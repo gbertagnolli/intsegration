@@ -2,9 +2,16 @@
 % Please edit documentation in R/GCE.R
 \name{GCE}
 \alias{GCE}
-\title{Global Communication Efficeiency}
+\title{Global Communication Efficiency}
 \usage{
-GCE(g, directed = FALSE, normalised = TRUE, weights = NULL, verbose = TRUE)
+GCE(
+  g,
+  directed = FALSE,
+  normalised = TRUE,
+  weights = NULL,
+  lengths = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{g}{a network.}
@@ -17,7 +24,18 @@ If FALSE (default) the network is taken as undirected.}
 \item{weights}{edge weights, representing the appeal of each link.
 if weights is NULL (the default) and g has a weight edge
 attribute that will be passed to the igraph
-\code{\link[igraph]{distances}} function, as \eqn{w_{ij}^{-1}}.}
+\code{\link[igraph]{distances}} function, as \eqn{w_{ij}^{-1}}.
+If this is NA then no weights are used (even if the graph has a weight attribute).
+The normalisation of the GCE relises on the comparison with the efficiency of a
+\eqn{G_{ideal}}, characterised by the weighted adjacency matrix
+\eqn{G_{ideal} = \frac{W + \Phi}{2}}. See [2] for more details.}
+
+\item{lengths}{Euclidean length of the edge, i.e., Euclidean distance between its
+two end-points, which are assumed to be non-negative reals. If this is NULL (the default)
+and \code{g} has an edge attribute \code{length} that will be used.
+If this is NA then no lengths are used (even if the graph edges have a length attribute).
+Mind that the GCE normalised over Euclidean lengths/distances has
+\eqn{W_{ideal} = \Phi_{Eucl}}.}
 
 \item{verbose}{logical, default TRUE.}
 }
@@ -26,7 +44,16 @@ A list
   \itemize{
     \item non_normalised - communication efficiency \eqn{E(G)},
     \item normalised - normalised communication efficiency, \eqn{GCE(G)},
-      or NULL if normalised is \code{FALSE}.
+      or NULL if \code{normalised} is \code{FALSE}. If the network is topological (i.e. no flows)
+      or if \code{weights = NA} then the normalised topological efficiency is equal to the
+      non-normalised topological efficiency.
+    \item normalised_lengths - normalised communication efficiency w.r.t. edge lengths,
+      i.e. \eqn{GCE^{Eucl}(G)}: shortest-paths are computed using the flows (as in the usual
+      normalied version), but now the path total cost and total strength are, respectively,
+      the sum of Euclidean distances (lengths) and the sum of the reciprocals of the lengths of
+      edges over the paths. NULL if there are non lengths.
+      If \code{normalised = FALSE} but \code{lengths} are provided, then the \eqn{GCE^{Eucl}(G)}
+      (that is \code{normalised_lengths}) will be computed anyway.
   }
 }
 \description{

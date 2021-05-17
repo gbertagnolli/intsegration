@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Global Communication Efficeiency — GCE • intsegration</title>
+<title>Global Communication Efficiency — GCE • intsegration</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Global Communication Efficeiency — GCE" />
+<meta property="og:title" content="Global Communication Efficiency — GCE" />
 <meta property="og:description" content="The average inverse shortest path length is a measure known as
    the global efficiency (see Latora and Marchiori, 2001).
    We implement the global communication efficiency (GCE) for weighted
@@ -91,7 +91,7 @@ Non-normalised GCE:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">intsegration</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@ Non-normalised GCE:
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Global Communication Efficeiency</h1>
+    <h1>Global Communication Efficiency</h1>
     <small class="dont-index">Source: <a href='https://github.com/gbertagnolli/intsegration/blob/master/R/GCE.R'><code>R/GCE.R</code></a></small>
     <div class="hidden name"><code>GCE.Rd</code></div>
     </div>
@@ -155,7 +155,14 @@ Non-normalised GCE:
    $$GCE(g)=\frac{E(g)}{E(g_{ideal})}$$</p>
     </div>
 
-    <pre class="usage"><span class='fu'>GCE</span><span class='op'>(</span><span class='va'>g</span>, directed <span class='op'>=</span> <span class='cn'>FALSE</span>, normalised <span class='op'>=</span> <span class='cn'>TRUE</span>, weights <span class='op'>=</span> <span class='cn'>NULL</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>GCE</span><span class='op'>(</span>
+  <span class='va'>g</span>,
+  directed <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  normalised <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  weights <span class='op'>=</span> <span class='cn'>NULL</span>,
+  lengths <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,7 +185,20 @@ If FALSE (default) the network is taken as undirected.</p></td>
       <td><p>edge weights, representing the appeal of each link.
 if weights is NULL (the default) and g has a weight edge
 attribute that will be passed to the igraph
-<code><a href='https://rdrr.io/pkg/igraph/man/distances.html'>distances</a></code> function, as \(w_{ij}^{-1}\).</p></td>
+<code><a href='https://rdrr.io/pkg/igraph/man/distances.html'>distances</a></code> function, as \(w_{ij}^{-1}\).
+If this is NA then no weights are used (even if the graph has a weight attribute).
+The normalisation of the GCE relises on the comparison with the efficiency of a
+\(G_{ideal}\), characterised by the weighted adjacency matrix
+\(G_{ideal} = \frac{W + \Phi}{2}\). See [2] for more details.</p></td>
+    </tr>
+    <tr>
+      <th>lengths</th>
+      <td><p>Euclidean length of the edge, i.e., Euclidean distance between its
+two end-points, which are assumed to be non-negative reals. If this is NULL (the default)
+and <code>g</code> has an edge attribute <code>length</code> that will be used.
+If this is NA then no lengths are used (even if the graph edges have a length attribute).
+Mind that the GCE normalised over Euclidean lengths/distances has
+\(W_{ideal} = \Phi_{Eucl}\).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -191,7 +211,16 @@ attribute that will be passed to the igraph
     <p>A list</p><ul>
 <li><p>non_normalised - communication efficiency \(E(G)\),</p></li>
 <li><p>normalised - normalised communication efficiency, \(GCE(G)\),
-      or NULL if normalised is <code>FALSE</code>.</p></li>
+      or NULL if <code>normalised</code> is <code>FALSE</code>. If the network is topological (i.e. no flows)
+      or if <code>weights = NA</code> then the normalised topological efficiency is equal to the
+      non-normalised topological efficiency.</p></li>
+<li><p>normalised_lengths - normalised communication efficiency w.r.t. edge lengths,
+      i.e. \(GCE^{Eucl}(G)\): shortest-paths are computed using the flows (as in the usual
+      normalied version), but now the path total cost and total strength are, respectively,
+      the sum of Euclidean distances (lengths) and the sum of the reciprocals of the lengths of
+      edges over the paths. NULL if there are non lengths.
+      If <code>normalised = FALSE</code> but <code>lengths</code> are provided, then the \(GCE^{Eucl}(G)\)
+      (that is <code>normalised_lengths</code>) will be computed anyway.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -218,13 +247,15 @@ attribute that will be passed to the igraph
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    union</span></div><div class='input'><span class='va'>karate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_graph.html'>make_graph</a></span><span class='op'>(</span><span class='st'>"zachary"</span><span class='op'>)</span>
 <span class='fu'>GCE</span><span class='op'>(</span><span class='va'>karate</span>, directed <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Unweighted graph, topological case.Start computation of shortest-paths
-#&gt; Computing matrix Phi
+</div><div class='output co'>#&gt; Unweighted graph, topological case.No Euclidean lengths/distances provided.Start computation of shortest-paths
 #&gt; compute E(G)</div><div class='output co'>#&gt; $non_normalised
 #&gt; [1] 0.4920083
 #&gt; 
 #&gt; $normalised
-#&gt; [1] 0.3863074
+#&gt; [1] 0.4920083
+#&gt; 
+#&gt; $normalised_lengths
+#&gt; NULL
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
