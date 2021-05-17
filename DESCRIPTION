@@ -1,6 +1,6 @@
 Package: intsegration
 Title: Integration and segregation of complex networks
-Version: 0.4
+Version: 1.0
 Authors@R: person(
     given = "Giulia",
     family = "Bertagnolli",
@@ -14,7 +14,8 @@ BugReports: https://github.com/gbertagnolli/intsegration
 Depends: R (>= 3.4.0)
 Imports:
   igraph,
-  e1071
+  Rcpp
+LinkingTo: Rcpp
 License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true

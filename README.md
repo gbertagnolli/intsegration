@@ -16,7 +16,7 @@ This package contains functions for computing indicators of segregation
 ## Installation
 
 ``` r
-devtools::install_github("gbertagnolli/intsegration")
+devtools::install_github("gbertagnolli/intsegration", subdir = "pkg")
 ```
 
 ## References
