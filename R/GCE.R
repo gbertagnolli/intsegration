@@ -50,8 +50,6 @@
 #'    two end-points, which are assumed to be non-negative reals. If this is NULL (the default)
 #'    and \code{g} has an edge attribute \code{length} that will be used.
 #'    If this is NA then no lengths are used (even if the graph edges have a length attribute).
-#'    Mind that the GCE normalised over Euclidean lengths/distances has
-#'    \eqn{W_{ideal} = \Phi_{Eucl}}.
 #' @param verbose logical, default TRUE.
 #' @return A list
 #'   \itemize{
@@ -277,7 +275,8 @@ GCE <- function(g, directed = FALSE, normalised = TRUE, weights = NULL,
   }
   if (use_lengths) {
     E_eucl <- 1. / N / (N - 1) * sum(1. / D_eucl, na.rm = T)
-    E_eucl_ideal <- 1. / N / (N - 1) * sum(Phi_eucl, na.rm = T)
+    W_ideal <- .5 * (as.matrix(igraph::as_adjacency_matrix(g, attr = "length_inv")) + Phi_eucl)
+    E_eucl_ideal <- 1. / N / (N - 1) * sum(W_ideal, na.rm = T)
     if (!identical(E_eucl_ideal, E_eucl)) {
       res$normalised_lengths <- E_eucl / E_eucl_ideal
     } else {
