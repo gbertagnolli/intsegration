@@ -24,7 +24,7 @@ This package contains functions for computing indicators of segregation (`modula
 ## Installation
 
 ```{r eval = FALSE}
-devtools::install_github("gbertagnolli/intsegration", subdir = "pkg")
+devtools::install_github("gbertagnolli/intsegration")
 ```
 
 
