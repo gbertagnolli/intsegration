@@ -21,9 +21,11 @@ devtools::install_github("gbertagnolli/intsegration")
 
 ## References
 
-Bertagnolli, Giulia, Riccardo Gallotti, and Manlio De Domenico. 2020.
-“Quantifying Efficient Information Exchange in Real Network Flows.”
-[Preprint arXiv:2003.11374](arxiv.org/abs/2003.11374).
+Bertagnolli, G., Gallotti, R. and De Domenico, M. Quantifying efficient
+information exchange in real network flows. Commun Phys 4, 1–10 (2021).
+[doi:
+10.1038/s42005-021-00612-5](http://www.nature.com/articles/s42005-021-00612-5)
+[arXiv:2003.11374](arxiv.org/abs/2003.11374).
 
 Gallotti, Riccardo, Bertagnolli, Giulia and De Domenico, Manlio.
 “Unraveling the hidden organisation of urban systems and their mobility

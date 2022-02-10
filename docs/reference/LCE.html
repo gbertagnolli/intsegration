@@ -164,26 +164,7 @@ attribute that will be passed to the igraph
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://igraph.org'>igraph</a></span><span class='op'>)</span>
 <span class='va'>karate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/make_graph.html'>make_graph</a></span><span class='op'>(</span><span class='st'>"zachary"</span><span class='op'>)</span>
 <span class='fu'>LCE</span><span class='op'>(</span><span class='va'>karate</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                    [,1]  [,2]      [,3]      [,4]      [,5]      [,6] [,7] [,8]
-#&gt; non_normalised     0.625 0.7333333 0.6909091 0.8809524 0.9166667 0.85 0.85 1   
-#&gt; normalised         0.625 0.7333333 0.6909091 0.8809524 0.9166667 0.85 0.85 1   
-#&gt; normalised_lengths NULL  NULL      NULL      NULL      NULL      NULL NULL NULL
-#&gt;                    [,9]      [,10]     [,11]     [,12] [,13] [,14]     [,15]
-#&gt; non_normalised     0.8333333 0.8333333 0.9166667 1     1     0.8666667 1    
-#&gt; normalised         0.8333333 0.8333333 0.9166667 1     1     0.8666667 1    
-#&gt; normalised_lengths NULL      NULL      NULL      NULL  NULL  NULL      NULL 
-#&gt;                    [,16] [,17] [,18] [,19] [,20]     [,21] [,22] [,23] [,24]
-#&gt; non_normalised     1     1     1     1     0.8333333 1     1     1     0.8  
-#&gt; normalised         1     1     1     1     0.8333333 1     1     1     0.8  
-#&gt; normalised_lengths NULL  NULL  NULL  NULL  NULL      NULL  NULL  NULL  NULL 
-#&gt;                    [,25]     [,26]     [,27] [,28] [,29]     [,30] [,31]
-#&gt; non_normalised     0.8333333 0.8333333 1     0.75  0.8333333 0.9   0.85 
-#&gt; normalised         0.8333333 0.8333333 1     0.75  0.8333333 0.9   0.85 
-#&gt; normalised_lengths NULL      NULL      NULL  NULL  NULL      NULL  NULL 
-#&gt;                    [,32]     [,33]     [,34]    
-#&gt; non_normalised     0.7142857 0.6602564 0.6045752
-#&gt; normalised         0.7142857 0.6602564 0.6045752
-#&gt; normalised_lengths NULL      NULL      NULL     </div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in rcpp_floyd_flow(x): vector is too large</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

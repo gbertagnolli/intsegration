@@ -16,6 +16,7 @@ using namespace Rcpp;
 //' @return F matrix of total flows, i.e. sum of inverse costs, along shortest-paths
 //' @return D_eucl matrix of Euclidean distances along shortest-paths (paths minimising sum of costs)
 //' @return F_eucl matrix of total Eucl. flows, i.e. sum of inverse lengths, along shortest-paths
+//' @export
 // [[Rcpp::export]]
 List rcpp_floyd_flow_length(NumericMatrix C, NumericMatrix L) {
   List res;

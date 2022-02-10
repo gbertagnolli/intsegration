@@ -6,6 +6,7 @@ using namespace Rcpp;
 //' @param C numeric matrix of edge costs
 //' @return D matrix of shortest-path distances, i.e. sum of costs along minimising paths
 //' @return F matrix of total flows, i.e. sum of inverse costs, along shortest-paths
+//' @export
 // [[Rcpp::export]]
 List rcpp_floyd_flow(NumericMatrix C) {
   List res;
